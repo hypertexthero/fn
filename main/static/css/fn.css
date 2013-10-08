@@ -1,0 +1,144 @@
+/* food news styles ======================== */
+
+body {font-family:verdana, sans-serif; color:#000;}
+input, button, select, textarea {font-family:verdana, sans-serif;}
+p, li, dd, dt {color:#000;}
+
+/* Navbar fixes */
+.navbar-inner {border-radius:0 !important;}
+.navbar {color:#ddd;}
+.navbar a {padding:10px 15px 0 0 !important; color:#eee !important;}
+.navbar li.active a {color:#fc6 !important; background:none !important;}
+.navbar a.btn {padding:3px 10px !important; margin:7px 3px; color:#000 !important; text-shadow:none; background:#ddd;}
+.navbar a.btn-custom, .navbar a.btn-primary {padding:3px 10px !important; margin:7px 3px; color:#000 !important; background:#fc0; font-weight:bold;}
+.btn-custom, .btn-primary {background:#fc0; color:#000;}
+.btn-custom:hover, .btn-primary:hover {background:#f96;}
+/*.navbar-search .btn {display:none;}*/
+.navbar-search {float:none; text-align:center; margin:0 auto;}
+a.brand {
+/*    background:url('../img/hotfood-logo.png') no-repeat; background-position:5px 6px;*/
+/*    text-indent:13px; margin-left:-3px !important;*/
+/*    font-family: Georgia, serif;*/
+    font-size:14px !important;
+    font-weight:bold !important;
+    padding:auto 10px !important;
+    vertical-align:middle;
+    text-decoration:none;
+    color:#fff !important;
+}
+/*@media (max-width: 600px) {
+    a.brand {text-indent:40px; padding:0 !important; width:30px; overflow:hidden;
+}*/
+a.brand b {font-size:24px; line-height:0;}
+.navbar a:hover {color:#fc6 !important;}
+.navbar a.btn:hover {color:#630 !important;}
+
+.main a:hover {background:#eee; text-decoration:none; color:#000;}
+
+*:target {background:#ffc !important;}
+
+/* Misc */
+.btn-profile {margin-top:20px;}
+.btn {border:0; text-shadow:none;}
+.bio {margin:20px 0;}
+.page-info {text-indent:10px;}
+.page-info a:hover {border-color:#d7dce0 !important;}
+.alert {margin-top:0;}
+.alert a {text-decoration:none;}
+.aligncenter {text-align:center !important;}
+.alignright {text-align:right !important;}
+.nomargin {margin:0;}
+body {color:#666;}
+
+/* Headings */
+h1, h3 {margin:0; color:#000;}
+h1 {font-size:20px;}
+h2 {font-size:16px;}
+h2 a:visited {color:rgb(156,188,156);}
+.domain {font-weight:normal; font-size:14px; color:#999;}
+
+/* Redundant Mezzanine bits */
+label {color:#000;}
+legend {display:none;}
+fieldset {margin-top:20px;}
+footer {background: none;}
+.form-actions {background:none; border:none; margin:0; padding:0 10px;}
+
+.link-item, .comment-item, .comment-links {border-bottom:2px solid #f9f9f9;}
+#comments h3 {border-top:3px solid #fafafa;}
+
+/* Rating widget with up/down arrows */
+.rating {float:left; margin-top:-15px;}
+.rating form {display:none !important;}
+.rating i {
+    display:block !important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.arrows {float:left; margin-top:-5px;}
+.score, .arrows {opacity:.6;}
+.arrows a:hover i {background-color:#1abc9c; background-image:url("../img/glyphicons-halflings-white.png");}
+
+.number {display:block; padding:18px 5px;}
+
+/* Link items in a list */
+.link-item h2 {line-height:30px; margin:0;}
+.link-item .rating{float:left;}
+.link-item .rating {
+    background-color: #fafafa;
+    padding: 10px;
+    margin: 0 20px 0 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width:75px;
+    text-align:center;
+}
+.link-item .arrows {
+    margin: 0 10px 0 0;
+    background-color: #fff;
+    padding: 7px;
+    display: block;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.link-item .score {
+  font-size: 16px;
+  line-height: 26px
+}
+
+.link-detail {width:80%;}
+@media (max-width: 600px) {.link-detail {width:60%;}}
+/*.link-detail a.profile, .link-detail a.comments {color:#999;}*/
+.link-detail a.profile:visited, .link-detail a.comments:visited {color:#bbb;}
+
+/* Link listing, details */
+.link-item, .comment-item {margin: 0; padding: 15px 0;}
+.link-view .rating i {float:left; margin:8px 0 0 -4px;}
+/*.link-view .description {margin:20px 0;}*/
+.link-meta .rating {margin:0 5px 0 0 !important;}
+
+/* Comments */
+#comments h3 {font-size:20px; padding-top:5px; margin:20px 0 -5px 0;}
+#comment .control-group, .reply-form .control-group {display:none;}
+#comment .input_id_comment, .reply-form .input_id_comment {display:block;}
+#comment label {margin-top:20px;}
+#comments li {padding:10px 0; border:0; background:none; margin:0;}
+.comment-thread ul {margin:0; padding:0 0 0 40px !important; border-left:2px dotted #eee;}
+.comment-meta, .comment-links {color:#999; margin:0; font-size:12px;}
+.comment-links {padding-bottom:5px;}
+#comments .rating {margin:1px 5px 0 3px !important;}
+#comments .rating i {opacity:0.7;}
+
+.comment-item {color:#aaa;}
+.comment-item .comment {color:#666;}
+
+
+
+
+
+
+
+
