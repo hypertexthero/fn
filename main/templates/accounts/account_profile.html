@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n future mezzanine_tags %}
+
+{% block meta_title %}{{ profile_user.username }}{% endblock %}
+{% block title %}{{ profile_user.profile }}{% endblock %}
+{% block body_id %}account{% endblock %}
+
+{% block main %}
+{% if profile_user == request.user %}
+<div class="pull-right">
+    <a class="btn btn-large btn-primary btn-profile" href="{% url "profile_update" %}">Update profile</a>
+</div>
+{% endif %}
+<div class="clearfix">
+    <dl>
+      {% with profile_user.profile as profile %}
+      {% if profile.bio %}
+      <dt>Biography</dt>
+      <dd>{{ profile.bio|urlize|linebreaks }}</dd>
+      {% endif %}
+      {% if profile.website %}
+      <dt>Website</dt> 
+      <dd>{{ profile.website|urlize }}</dd>
+      {% endif %}
+      {% endwith %}
+      <br>
+      <dt>Member Since</dt> 
+      <dd>{{ profile_user.date_joined|date:"j F Y" }}</dd>
+    </dl>
+
+    <a href="{% url "comment_list_user" profile_user.username %}">comments ({{ profile_user.comment_comments.count }})</a> |
+    <a href="{% url "link_list_user" profile_user.username %}">links ({{ profile_user.links.published.count }})</a>
+
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block meta_title %}New Link{% endblock %}
+{% block title %}New Link{% endblock %}
+
+{% load mezzanine_tags %}
+
+{% block main %}
+<form method="post">
+<fieldset>{% fields_for form %}</fieldset>
+<div class="actions">
+    <input class="btn btn-custom btn-large" type="submit" value="Submit">
+</div>
+
+</form>
+{% endblock %}

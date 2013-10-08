@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+{% load mezzanine_tags i18n future staticfiles %}
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
+
+<style>
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic");
+@import url(http://fonts.googleapis.com/css?family=Risque);
+</style>
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
+{# <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-dist/css/bootstrap.css"> #}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/mezzanine.css">
+{# <link rel="stylesheet" href="{{ STATIC_URL }}css/flat-ui.css"> #}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/hf.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+{% endcompress %}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-extras.js"></script>
+<script src="{{ STATIC_URL }}js/drum.js"></script>
+{# <script src="{{ STATIC_URL }}js/jquery.pjax.js"></script> #}
+{% endcompress %}
+
+{% block extra_head %}{% endblock %}
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+<div class="navbar-inner navbar-fixed-top">
+<div class="container">
+    {# <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> #}
+    {#     <span class="icon-bar"></span> #}
+    {#     <span class="icon-bar"></span> #}
+    {#     <span class="icon-bar"></span> #}
+    {# </a> #}
+
+    {% if settings.SITE_TITLE %}<a class="brand" href="/"><b>♨</b> {{ settings.SITE_TITLE }}</a>{% endif %}
+      {# http://www.fileformat.info/info/unicode/char/2668/index.htm &#9832; #}
+    <ul class="nav">
+        <li class="divider-vertical"></li>
+        {% url "link_list_latest" as link_list_latest %}
+        {% url "comment_list_latest" as comment_list_latest %}
+        {% url "comment_list_best" as comment_list_best %}
+        <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}">New</a></li>
+        <li{% if request.path == comment_list_latest %} class="active"{% endif %}><a href="{{ comment_list_latest }}">Comments</a></li>
+        <li{% if request.path == comment_list_best %} class="active"{% endif %}><a href="{{ comment_list_best }}">Best</a></li>
+    </ul>
+    {# <div class="nav-collapse"> #}
+        <div class="pull-right">
+            <a class="btn btn-small btn-custom no-pjax" href="{% url "link_create" %}">Submit New Link</a>
+        </div>
+        {# <ul class="nav pull-right"><li class="divider-vertical"></li></ul> #}
+        {% nevercache %}
+        {% include "accounts/includes/user_panel_nav.html" %}
+        {% endnevercache %}
+    {# </div> #}
+</div>
+</div>
+</div>
+
+<div class="container main">
+{% nevercache %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" data-alert="alert">
+    <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+</div>
+{% endfor %}
+{% endnevercache %}
+<h1>{% block title %}{% endblock %}</h1>
+</div>
+
+<div class="container main">
+<div class="row">
+<div class="span12 middle">
+    {% block main %}{% endblock %}
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container aligncenter">
+    <p>
+      Recent posts with most {# <strong class="subdued" style="font-family:'courier new', courier, monospace;">&and;</strong> #}<i class="icon icon-arrow-up"></i>upvotes are on the <a href="/">homepage</a>. Latest posts are in <a href="/new/">new</a>.
+      <br>
+      {# Comments are owned bu by their authors.  #}
+      {# <br> #}
+      Thank you for visiting <a class="quiet" href="/">food.hypertexthero.com</a>
+      <br>
+      {% search_form "pages.Page main.Link" %}
+      {# <span class="caps">Festina Lente Consilio Manuque</span> #}
+    </p>
+</div>
+</footer>
+
+</body>
+</html>

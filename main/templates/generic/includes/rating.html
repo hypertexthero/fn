@@ -1,0 +1,25 @@
+{% load mezzanine_tags rating_tags i18n future %}
+
+<div class="rating">
+
+    <form method="post" action="{% url "rating" %}">
+        {% fields_for rating_form %}
+    </form>
+
+    <span class="arrows">
+                {# classes are important for functionality - see drum.js #}
+        <a href="#" title="Upvote this entry."><i class="icon icon-arrow-up"></i> {# &or; #}</a>
+        {# {% if profile_user.karma > 10 %} #}
+        <a href="#" title="Downvote this entry."><i class="icon icon-arrow-down"></i>{# &and; #}</a>
+        {# {% endif %} #}
+    </span>
+
+    <span class="score">
+        {% with rating_obj.comments_count|default:0 as comments_count %}
+        <!--{{ rating_sum|add:comments_count }}-->
+        {{ rating_sum }}
+        {% endwith %}
+    </span>
+
+</div>
+
