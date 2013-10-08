@@ -8,6 +8,7 @@ This To Do
 ==========
 
 - Bookmarklet for posting
+- HTTPS
 - Persona authentication
 - Deployment
 - Blog post
