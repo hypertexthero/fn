@@ -19,3 +19,5 @@ DATABASES = {
         "PORT": "",
     }
 }
+
+SITE_URL = 'https://example.com'

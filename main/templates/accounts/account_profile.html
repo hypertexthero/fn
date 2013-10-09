@@ -2,34 +2,45 @@
 {% load i18n future mezzanine_tags %}
 
 {% block meta_title %}{{ profile_user.username }}{% endblock %}
-{% block title %}{{ profile_user.profile }}{% endblock %}
+{% block title %}{{ profile_user.profile.user }}{% endblock %}
 {% block body_id %}account{% endblock %}
 
 {% block main %}
-{% if profile_user == request.user %}
-<div class="pull-right">
-    <a class="btn btn-large btn-primary btn-profile" href="{% url "profile_update" %}">Update profile</a>
-</div>
-{% endif %}
-<div class="clearfix">
-    <dl>
+    <dl class="dl-horizontal">
+      <dt>Member Since</dt> 
+      <dd>{{ profile_user.date_joined|date:"j F Y" }}</dd>
+      <dt>Karma</dt> 
+      <dd>{{ profile_user.profile.karma }} <a id="karma" class="small normal" data-content="Karma is a measure of reputation on {{ settings.SITE_TITLE }}. It increases when a person&rsquo;s links or comments are upvoted." title="" data-toggle="popover" href="#" data-original-title="">what is this?</a></dd>
       {% with profile_user.profile as profile %}
-      {% if profile.bio %}
-      <dt>Biography</dt>
-      <dd>{{ profile.bio|urlize|linebreaks }}</dd>
-      {% endif %}
+
       {% if profile.website %}
       <dt>Website</dt> 
       <dd>{{ profile.website|urlize }}</dd>
       {% endif %}
+      
+      {% if profile.bio %}
+      <dt>Biography</dt>
+      <dd>{{ profile.bio|urlize }}</dd>
+      {% endif %}
       {% endwith %}
-      <br>
-      <dt>Member Since</dt> 
-      <dd>{{ profile_user.date_joined|date:"j F Y" }}</dd>
+
+      <dt><a href="{% url "comment_list_user" profile_user.username %}">Comments</a></dt>
+      <dd>{{ profile_user.comment_comments.count }}</dd>
+
+      <dt><a href="{% url "link_list_user" profile_user.username %}">Links</a></dt>
+      <dd>{{ profile_user.links.published.count }}</dd>
     </dl>
+    
 
-    <a href="{% url "comment_list_user" profile_user.username %}">comments ({{ profile_user.comment_comments.count }})</a> |
-    <a href="{% url "link_list_user" profile_user.username %}">links ({{ profile_user.links.published.count }})</a>
-
-</div>
+{% if profile_user == request.user %}
+{# <div class="pull-right"> #}
+    <p><a class="btn btn-large btn-primary btn-profile" href="{% url "profile_update" %}">Update profile</a></p>
+{# </div> #}
+{% endif %}
 {% endblock %}
+
+{% block extra_scripts %}
+<script>
+  $('#karma').popover()
+</script>
+{% endblock extra_scripts %}

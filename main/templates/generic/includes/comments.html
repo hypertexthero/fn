@@ -15,6 +15,9 @@ $(function() {
 <style>.input_id_honeypot {display:none !important;}</style>
 {% comment_thread object_for_comments %}
 <h3>{% trans "New Comment" %}</h3>
+
+
+{% if user.is_authenticated %} {# =todo: remove if possible #}
 <form method="post" id="comment" action="{{ comment_url }}#comment">
     {% if not request.POST.replied_to %}
     {% fields_for posted_comment_form %}
@@ -25,5 +28,11 @@ $(function() {
         <input class="btn btn-custom btn-large" type="submit" value="{% trans "Submit New Comment" %}">
     </div>
 </form>
+{% else %}
+  Login to submit comments.
+{% endif %}
+
+
+
 {% endif %}
 </div>

@@ -1,6 +1,7 @@
 -e git://github.com/stephenmcd/mezzanine.git#egg=mezzanine
 django-compressor
 django-extensions
+django-browserid
 feedparser
 gunicorn
 psycopg2

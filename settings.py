@@ -25,10 +25,47 @@ INSTALLED_APPS = (
     "mezzanine.core",
     "mezzanine.generic",
     "mezzanine.accounts",
+
+    # =persona for authentication
+    "django_browserid",
     
     # south for migrations
     "south",
 )
+
+# from /fn-env/src/mezzanine/mezzanine/project_template
+AUTHENTICATION_BACKENDS = (
+    "mezzanine.core.auth_backends.MezzanineBackend",
+    "django_browserid.auth.BrowserIDBackend", # =persona
+)
+
+ACCOUNTS_PROFILE_FORM_EXCLUDE_FIELDS = (
+    # "username",
+    "email",
+    "first_name",
+    "last_name",
+    "password",
+    "password_1",
+    "password_2",
+)
+
+# from /fn-env/src/mezzanine/mezzanine/project_template
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.static",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "django.core.context_processors.tz",
+    "mezzanine.conf.context_processors.settings",
+    "django_browserid.context_processors.browserid", # =persona
+)
+
+# LOGIN_REDIRECT_URL = '/' # =persona
+LOGIN_REDIRECT_URL_FAILURE = '/' # =persona
+LOGOUT_REDIRECT_URL = '/' # =persona
 
 MIDDLEWARE_CLASSES = (["mezzanine.core.middleware.UpdateCacheMiddleware"] +
                       list(MIDDLEWARE_CLASSES) +
@@ -45,7 +82,7 @@ ACCOUNTS_PROFILE_VIEWS_ENABLED = True
 
 # Drum
 ALLOWED_DUPLICATE_LINK_HOURS = 24 * 7 * 3
-ITEMS_PER_PAGE = 20
+ITEMS_PER_PAGE = 30
 
 try:
     from local_settings import *

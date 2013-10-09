@@ -1,3 +1,4 @@
+{% load browserid %} 
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
 {% load mezzanine_tags i18n future staticfiles %}
@@ -10,10 +11,6 @@
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
 <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
 
-<style>
-@import url("http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic");
-@import url(http://fonts.googleapis.com/css?family=Risque);
-</style>
 {% compress css %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
 {# <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-dist/css/bootstrap.css"> #}
@@ -21,21 +18,24 @@
 {# <link rel="stylesheet" href="{{ STATIC_URL }}css/flat-ui.css"> #}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/fn.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+
+{# <link href="{{ STATIC_URL }}css/introjs.css" rel="stylesheet"> #}
 {% endcompress %}
 
 {% compress js %}
-<script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script>
-<script src="{{ STATIC_URL }}js/bootstrap.js"></script>
-<script src="{{ STATIC_URL }}js/bootstrap-extras.js"></script>
+{# <script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script> #}
+<script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+{# <script src="{{ STATIC_URL }}js/bootstrap-extras.js"></script> #}
 <script src="{{ STATIC_URL }}js/drum.js"></script>
 {# <script src="{{ STATIC_URL }}js/jquery.pjax.js"></script> #}
 {% endcompress %}
 
 {% block extra_head %}{% endblock %}
-
 </head>
-<body>
 
+<body>
+{% browserid_info %} 
 <div class="navbar navbar-inverse">
 <div class="navbar-inner navbar-fixed-top">
 <div class="container">
@@ -57,12 +57,47 @@
         <li{% if request.path == comment_list_best %} class="active"{% endif %}><a href="{{ comment_list_best }}">Best</a></li>
     </ul>
     {# <div class="nav-collapse"> #}
-        <div class="pull-right">
-            <a class="btn btn-small btn-custom no-pjax" href="{% url "link_create" %}">Submit New Link</a>
-        </div>
+        {# <div class="pull-right"> #}
+        {#      #}
+        {# </div> #}
         {# <ul class="nav pull-right"><li class="divider-vertical"></li></ul> #}
+       
         {% nevercache %}
-        {% include "accounts/includes/user_panel_nav.html" %}
+        {# {% include "accounts/includes/user_panel_nav.html" %} #}
+          {# <ul class="nav pull-right"><li class="divider-vertical"></li></ul> #}
+
+          <ul class="nav pull-right">
+              {% if request.user.is_authenticated %}
+              {# <a href="{% url "logout" %}?next={{ request.path }}" #}
+              {#     class="btn btn-small">{% trans "Log out" %}</a> #}
+              {# http://django-browserid.readthedocs.org/en/v0.9/details/api.html #}
+              {# =persona #}
+                <li>
+                  {% url "profile" request.user.username as profile_url %}
+                  {% if not profile_url %}{% url "profile_update" as profile_url %}{% endif %}
+                {# {{ request.user.profile }} #}
+                {# {% if request.user.profile %} #}
+                  <a href="{{ profile_url }}" title="Click to update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a>
+                {# {% else %} #}
+                {# <a href="/account/update/" title="Click to set up your display name. The number is your karma. It increases when your submissions are upvoted.">Set your username</a> #}
+                {# {% endif %} #}
+                </li>
+                <li>
+                  {% browserid_logout text='Logout' %}
+                </li>
+                <li><a class="btn btn-small btn-custom no-pjax" href="{% url "link_create" %}"><i class="icon icon-pencil"></i> Submit Link</a></li>
+              {% else %}
+              {# <a href="{% url "login" %}?next={{ request.path }}" #}
+              {#     class="btn btn-small">{% trans "Log in" %}</a> or #}
+              {# =persona #}    
+              <li title="Login with Mozilla Persona.">
+                {% browserid_login text='Login to Submit Link' next='{{ firstof request.path "/link/create/" }}' link_class='btn btn-small btn-custom no-pjax' %}
+              </li>
+              {# <a href="{% url "signup" %}?next={{ request.path }}" #}
+              {#     class="btn btn-small">{% trans "Create an Account" %}</a> #}
+              {% endif %}
+          </ul>
+
         {% endnevercache %}
     {# </div> #}
 </div>
@@ -97,11 +132,13 @@
       {# <br> #}
       Thank you for visiting <a class="quiet" href="/">food.hypertexthero.com</a>
       <br>
-      {% search_form "pages.Page main.Link" %}
+      {% search_form "main.Link" %}
       {# <span class="caps">Festina Lente Consilio Manuque</span> #}
     </p>
 </div>
 </footer>
 
+{% browserid_js %} 
+{% block extra_scripts %}{% endblock extra_scripts %}
 </body>
 </html>

@@ -7,24 +7,33 @@
 
 {% block main %}
 
-{% for link in object_list %}
-<div class="link-item clearfix">
-    <div class="pull-left number">{{ forloop.counter0|add:object_list.start_index }}</div>
-    {% if not profile_user %}{% rating_for link %}{% endif %}
-    <div class="link-detail{% if link.rating_sum < 0 %} link-negative{% endif %}">
-        <h2>
-            <a href="{{ link.link }}">{{ link.title }}</a>
-            <span class="domain">({{ link.domain }})</span>
-        </h2>
-        by <a class="profile" href="{% url "profile" link.user.username %}">{{ link.user.profile }}</a>
-        {{ link.publish_date|timesince }} ago |
-        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a>
-    </div>
-</div>
-{% empty %}
-<p>{{ no_data }}</p>
-{% endfor %}
-
+<table class="table table-condensed">
+    <colgroup>
+        <col></col>
+        {# <col></col> #}
+        <col></col>
+    </colgroup>
+    {% for link in object_list %}
+    <tr> {# class="{% cycle odd,even %}" #}
+      {# <td class="vote"> #}
+      {#    #}
+      {# </td> #}
+        <td class="entry link-detail{% if link.rating_sum < 0 %} link-negative{% endif %}">
+           
+            <h2><b>{{ forloop.counter0|add:object_list.start_index }}</b> <a href="{{ link.link }}">{{ link.title }}</a>
+            <span class="domain">({{ link.domain }})</span></h2>
+            <div class="meta muted small">
+              {% if not profile_user %}{% rating_for link %}{% endif %}
+              by <a class="profile" href="{% url "profile" link.user.username %}">{{ link.user.profile }}</a>
+              {{ link.publish_date|timesince }} ago <span class="muted">|</span>
+              <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a>
+            </div>
+      </td>
+    </tr>
+    {% empty %}
+    <p>{{ no_data }}</p>
+    {% endfor %}
+</table>
 {# {% pagination_for object_list "page" "pjax" %} #}
 {% pagination_for object_list "page" %}
 

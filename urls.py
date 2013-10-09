@@ -14,5 +14,9 @@ urlpatterns = patterns("",
     ("^", include("mezzanine.urls")),
 )
 
+urlpatterns += patterns("",
+    (r"^browserid/", include("django_browserid.urls")), # =persona
+)
+
 # Adds ``STATIC_URL`` to the context.
 handler500 = "mezzanine.core.views.server_error"

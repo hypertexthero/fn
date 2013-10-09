@@ -93,7 +93,7 @@ class LinkList(LinkView, ScoreOrderingView):
         if context["profile_user"]:
             return "Links by %s" % context["profile_user"].profile
         else:
-            return "Newest"
+            return "Newest Links"
 
 
 class LinkCreate(CreateView):
