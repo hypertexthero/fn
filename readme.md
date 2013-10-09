@@ -1,4 +1,3 @@
-
 Food News
 ====
 
@@ -7,11 +6,11 @@ Food News is a Hacker News clone, built using [Drum](http://drum.jupo.org/) & [M
 This To Do
 ==========
 
-- Table
-- Disable password fields in profile update form
+- [Users should be be redirected to proper page & action after login](https://github.com/mozilla/django-browserid/issues/205).
+- [Disable password fields in profile update form](http://stackoverflow.com/a/12648124/412329)
 - Deployment
-- Introduction using [Intro.js](http://usablica.github.io/intro.js/)
 - Blog post
 - Bookmarklet for posting
 - HTTPS
+- Introduction using [Intro.js](http://usablica.github.io/intro.js/)
 - Search comments
