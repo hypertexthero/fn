@@ -3,7 +3,7 @@ Food News
 
 Food News is a Hacker News clone, built using [Drum](http://drum.jupo.org/) & [Mezzanine](http://http://mezzanine.jupo.org/). Uses [Mozilla Persona](https://persona.org) for authentication.
 
-This To Do
+Things To Do
 ==========
 
 - [Users should be be redirected to proper page & action after login](https://github.com/mozilla/django-browserid/issues/205)
