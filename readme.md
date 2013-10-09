@@ -6,7 +6,7 @@ Food News is a Hacker News clone, built using [Drum](http://drum.jupo.org/) & [M
 This To Do
 ==========
 
-- [Users should be be redirected to proper page & action after login](https://github.com/mozilla/django-browserid/issues/205).
+- [Users should be be redirected to proper page & action after login](https://github.com/mozilla/django-browserid/issues/205)
 - [Disable password fields in profile update form](http://stackoverflow.com/a/12648124/412329)
 - Deployment
 - Blog post
