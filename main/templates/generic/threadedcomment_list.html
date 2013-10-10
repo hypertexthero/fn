@@ -10,10 +10,13 @@
 {% for comment in object_list %}
 <div class="comment-item">
     <p class="comment">{{ comment.comment }}</p>
-    by <a href="{% url "profile" comment.user.username %}">{{ comment.user.profile }}</a>
-    {{ comment.submit_date|timesince }} ago in
-    <a class="comments" href="{{ comment.get_absolute_url }}" title="Permanent link to this comment.">{{ comment.content_object }}</a>
-    <br clear="left">
+    <div class="meta muted small">
+      {% if not profile_user %}{% rating_for comment %}{% endif %}
+      by <a href="{% url "profile" comment.user.username %}">{{ comment.user.profile }}</a>
+      {{ comment.submit_date|timesince }} ago in
+      <a class="comments" href="{{ comment.get_absolute_url }}" title="Permanent link to this comment.">{{ comment.content_object }}</a>
+      <br clear="left">
+    </div>
 </div>
 {% empty %}
 <p>{{ no_data }}</p>

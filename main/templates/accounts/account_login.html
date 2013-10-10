@@ -1,6 +1,5 @@
 {% extends "accounts/account_form.html" %}
-{% load browserid %} 
-{% load i18n future %}
+{% load i18n future browserid %}
 
 {% block main %}
 
@@ -15,7 +14,11 @@
     {# {% url "profile_update" as profile_update_url %} #}
     {# {% blocktrans %}<p><a href="{{ password_reset_url }}?next={{ profile_update_url }}">Forgot your password?</a></p>{% endblocktrans %}</p> #}
     
-    <p>{% browserid_login text='Login with Mozilla Persona' next='/link/create/' link_class='btn btn-small btn-custom no-pjax' %}</p>
+    {% if request.path == "/accounts/login/" %}
+    <p>{% browserid_login text='Login' next='/rating/' link_class='btn btn-custom' %}</p>
+    {% else %}
+    <p>{% browserid_login text='Login' link_class='btn btn-custom' %}</p>
+    {% endif %}
     
 {% endif %}
 

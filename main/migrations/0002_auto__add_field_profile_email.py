@@ -8,56 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Link'
-        db.create_table(u'main_link', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('comments_count', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('keywords_string', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
-            ('rating_count', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('rating_sum', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('rating_average', self.gf('django.db.models.fields.FloatField')(default=0)),
-            ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=500)),
-            ('slug', self.gf('django.db.models.fields.CharField')(max_length=2000, null=True, blank=True)),
-            ('_meta_title', self.gf('django.db.models.fields.CharField')(max_length=500, null=True, blank=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('gen_description', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('created', self.gf('django.db.models.fields.DateTimeField')(null=True)),
-            ('updated', self.gf('django.db.models.fields.DateTimeField')(null=True)),
-            ('status', self.gf('django.db.models.fields.IntegerField')(default=2)),
-            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('short_url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
-            ('in_sitemap', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(related_name='links', to=orm['auth.User'])),
-            ('link', self.gf('django.db.models.fields.URLField')(max_length=200)),
-            ('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
-            ('rating', self.gf('mezzanine.generic.fields.RatingField')(object_id_field='object_pk', to=orm['generic.Rating'], frozen_by_south=True)),
-            ('comments', self.gf('mezzanine.generic.fields.CommentsField')(object_id_field='object_pk', to=orm['generic.ThreadedComment'], frozen_by_south=True)),
-        ))
-        db.send_create_signal(u'main', ['Link'])
-
-        # Adding model 'Profile'
-        db.create_table(u'main_profile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('password', self.gf('django.db.models.fields.CharField')(max_length=128)),
-            ('last_login', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
-            ('website', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('bio', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('karma', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('is_admin', self.gf('django.db.models.fields.BooleanField')(default=False)),
-        ))
-        db.send_create_signal(u'main', ['Profile'])
+        # Adding field 'Profile.email'
+        db.add_column(u'main_profile', 'email',
+                      self.gf('django.db.models.fields.EmailField')(default='s@s.com', max_length=255),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Link'
-        db.delete_table(u'main_link')
-
-        # Deleting model 'Profile'
-        db.delete_table(u'main_profile')
+        # Deleting field 'Profile.email'
+        db.delete_column(u'main_profile', 'email')
 
 
     models = {
@@ -177,6 +136,7 @@ class Migration(SchemaMigration):
         u'main.profile': {
             'Meta': {'object_name': 'Profile'},
             'bio': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'email': ('django.db.models.fields.EmailField', [], {'max_length': '255'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'is_admin': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),

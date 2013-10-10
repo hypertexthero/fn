@@ -1,4 +1,4 @@
-{% load i18n mezzanine_tags comment_tags rating_tags future %}
+{% load i18n mezzanine_tags comment_tags rating_tags future browserid %}
 
 <ul class="unstyled comment-thread">
     {% for comment in comments_for_thread %}
@@ -15,8 +15,9 @@
             {% rating_for comment %}
             <a href="{{ request.path }}#comment-{{ comment.id }}">link</a> |
 
-            {% if user.is_authenticated %} {# =todo: remove if possible #}
-            <a href="#reply-{{ comment.id }}" class="reply no-pjax">reply</a>
+            {# =todo: remove if possible #}
+            {% if user.is_authenticated %}
+            <a href="#reply-{{ comment.id }}" class="reply">reply</a>
             
             <form class="reply-form" method="post" id="reply-{{ comment.id }}"
                 action="{{ comment_url }}#reply-{{ comment.id }}"
@@ -30,7 +31,7 @@
                 <input class="btn btn-primary btn-large" type="submit" value="{% trans "Reply" %}">
             </form>
             {% else %}
-            login to reply
+            {% browserid_login text='Login to reply' next=request.path %}
             {% endif %}
             
         </div>

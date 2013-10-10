@@ -1,4 +1,4 @@
-{% load i18n mezzanine_tags comment_tags %}
+{% load i18n mezzanine_tags comment_tags browserid %}
 <div id="comments">
 <h3>{% trans "Comments" %}</h3>
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
@@ -14,10 +14,10 @@ $(function() {
 </script>
 <style>.input_id_honeypot {display:none !important;}</style>
 {% comment_thread object_for_comments %}
-<h3>{% trans "New Comment" %}</h3>
+{# <h3>{% trans "New Comment" %}</h3> #}
 
-
-{% if user.is_authenticated %} {# =todo: remove if possible #}
+{# =todo: remove if possible #}
+{% if user.is_authenticated %} 
 <form method="post" id="comment" action="{{ comment_url }}#comment">
     {% if not request.POST.replied_to %}
     {% fields_for posted_comment_form %}
@@ -29,7 +29,7 @@ $(function() {
     </div>
 </form>
 {% else %}
-  Login to submit comments.
+  {% browserid_login text='Login to submit new comment' next=request.path %}
 {% endif %}
 
 

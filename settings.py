@@ -40,13 +40,9 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ACCOUNTS_PROFILE_FORM_EXCLUDE_FIELDS = (
-    # "username",
     "email",
     "first_name",
     "last_name",
-    "password",
-    "password_1",
-    "password_2",
 )
 
 # from /fn-env/src/mezzanine/mezzanine/project_template
@@ -63,7 +59,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django_browserid.context_processors.browserid", # =persona
 )
 
-# LOGIN_REDIRECT_URL = '/' # =persona
+LOGIN_REDIRECT_URL = '/' # =persona
 LOGIN_REDIRECT_URL_FAILURE = '/' # =persona
 LOGOUT_REDIRECT_URL = '/' # =persona
 

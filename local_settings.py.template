@@ -1,7 +1,7 @@
 
 DEBUG = True
 
-SECRET_KEY = ""
+SECRET_KEY = "thisisverysecretsodon'tshare"
 
 DATABASES = {
     "default": {
@@ -20,4 +20,35 @@ DATABASES = {
     }
 }
 
-SITE_URL = 'https://example.com'
+INTERNAL_IPS = ('127.0.0.1',)
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# =persona
+# http://django-browserid.readthedocs.org/en/v0.9/setup.html#configuration
+SITE_URL = 'http://127.0.0.1:8000' # Make sure to set this correctly for security!
+SESSION_COOKIE_SECURE = False # Comment this out for production
+
+# http://django-browserid.readthedocs.org/en/v0.9/details/troubleshooting.html#login-fails-silently-due-to-cache-issues
+# CACHES = {
+#     'default': {
+#         # 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         # 'LOCATION': 'unique-snowflake'
+#     }
+# }
+
+
+FABRIC = {
+    "SSH_USER": "hth", # SSH username
+    "SSH_PASS":  "", # SSH password (consider key-based authentication)
+    "SSH_KEY_PATH":  "", # Local path to SSH key file, for key-based auth
+    "HOSTS": [], # List of hosts to deploy to
+    "VIRTUALENV_HOME":  "", # Absolute remote path for virtualenvs
+    "PROJECT_NAME": "", # Unique identifier for project
+    "REQUIREMENTS_PATH": "requirements.txt", # Path to pip requirements, relative to project
+    "GUNICORN_PORT": 8000, # Port gunicorn will listen on
+    "LOCALE": "en_US.utf8", # Should end with ".utf8"
+    "LIVE_HOSTNAME": "", # Host for public site.
+    "REPO_URL": "", # Git or Mercurial remote repo URL for the project
+    "DB_PASS": "", # Live database password
+    "ADMIN_PASS": "", # Live admin user password
+}

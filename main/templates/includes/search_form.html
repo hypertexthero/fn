@@ -1,7 +1,7 @@
 {% load mezzanine_tags i18n future %}
 <form action="{% url "search" %}" class="navbar-search input-append">
 
-<input class="search-query" placeholder="{% trans "Search" %}" type="text" name="q" value="{{ request.REQUEST.q }}">
+<input class="search-query" placeholder="" type="text" name="q" value="{{ request.REQUEST.q }}">
 
 {% if search_model_choices %}
     {% if search_model_choices|length == 1 %}
@@ -19,6 +19,6 @@
     {% endif %}
 {% endif %}
 
-<input type="submit" class="btn" value="{% trans "Go" %}">
+<button type="submit" class="btn">Search</button>
 
 </form>

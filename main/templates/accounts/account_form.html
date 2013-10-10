@@ -12,13 +12,52 @@
 
 {% block main %}
 <fieldset>
-    <legend>{{ title }}</legend>
-    <form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-    {% fields_for form %}
-    <div class="form-actions">
-        <input class="btn btn-primary btn-large" type="submit" value="{{ title }}">
+  <legend>{{ title }}</legend>
+  <form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+    {# {% fields_for form %} #}
+
+    {% csrf_token %}
+    <input name="referrer" value="//{{request.META.HTTP_HOST}}/users/{{request.user}}/" type="hidden">
+    
+    {{ form.non_field_errors }}
+    
+    <div class="control-group input_id_username">
+      {{ form.username.errors }}
+      <label class="control-label" for="id_username">
+        {{ form.username.label }}
+      </label>
+      <div class="controls">
+          <input autofocus="" id="id_username" maxlength="30" name="username" required="" value="{{ form.username.value }}" type="text">
+          <span class="help-inline">Only letters, numbers, dashes or underscores please.</span>
+      </div>
     </div>
-    </form>
+    
+    <div class="control-group input_id_website ">
+      {{ form.website.errors }}
+      <label class="control-label" for="id_website">
+        {{ form.website.label }}
+      </label>
+      <div class="controls">
+        <input id="id_website" maxlength="200" name="website" type="text" value="{{ form.website.value|default:'' }}" />
+        <span class="help-inline"></span>
+      </div>
+    </div>
+    
+    <div class="control-group input_id_bio">
+      {{ form.bio.errors }}
+      <label class="control-label" for="id_bio">
+        {{ form.bio.label }}
+      </label>
+      <div class="controls">
+        <textarea cols="40" id="id_bio" name="bio" rows="10">{{ form.bio.value|default:'' }}</textarea>
+        <span class="help-inline"></span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <input class="btn btn-primary btn-large" type="submit" value="{{ title }}"> or <a href="javascript:history.go(-1)">Cancel</a>
+    </div>
+  </form>
 </fieldset>
 {% endblock %}
 
