@@ -92,4 +92,4 @@ If you add new fields or change certain values of existing ones such as blank or
 This is the cron job to make sure gunicorn is running.
 ssh into webfaction account, type ‘crontab -e’ to edit the cron file and append the following to the bottom of the file:
 
-  30 * * * * cd ~/webapps/foodnews/fn-env/ && /webapps/foodnews/fn-env/bin/python /webapps/foodnews/fn-env/hth/manage.py run_gunicorn --daemon -b 127.0.0.1:17734 -w 2 --max-requests 500
+  30 * * * * cd ~/webapps/foodnews/fn-env/ && /webapps/foodnews/fn-env/bin/python /webapps/foodnews/fn-env/hth/manage.py gunicorn_django --daemon -b 127.0.0.1:17734 -w 2 --max-requests 500
