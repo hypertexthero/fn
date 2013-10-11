@@ -6,7 +6,7 @@ Food News
 Things To Do
 ==========
 
-- Deployment
+- Deployment - see why the new gunicorn command throws an error (currently running with `gunicorn_django`)
 - FAQ and guidelines
 - Blog post
 - IE test

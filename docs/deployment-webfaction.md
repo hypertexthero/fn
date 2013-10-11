@@ -23,13 +23,17 @@ The deployed stack for <http://food.hypertexthero.com> consists of the following
 
         ps aux | grep gunicorn
 
-4. Kill the process gracefully (replace #### with the number from the output above):
+4. Kill the process gracefully to RESTART (replace #### with the number from the output above):
 
-        kill -HUP ####
+        kill -HUP ######
 
-5. If necessary, restart the Gunicorn server:
+Or STOP:
 
-        python manage.py run_gunicorn --daemon -b 127.0.0.1:17734 -w 2 --max-requests 500
+        kill ######
+
+5. If necessary, start the Gunicorn server again:
+
+        gunicorn_django --daemon -b 127.0.0.1:17734 -w 2 --max-requests 500
 
 
 ## Deploying Code

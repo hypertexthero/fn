@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     "mezzanine.accounts",
 
     # gunicorn for production
+    # gunicorn_django --daemon -b 127.0.0.1:17734 -w 2 --max-requests 500
     "gunicorn",
 
     # =persona for authentication
