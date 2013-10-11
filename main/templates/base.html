@@ -61,21 +61,19 @@
                 <li>
                   {% browserid_logout text='Logout' %}
                 </li>
-                <li><a class="btn btn-small btn-custom" href="{% url "link_create" %}">Submit New Link</a></li>
+                <li><a class="btn btn-custom" href="{% url "link_create" %}">Submit New Link</a></li>
               {% else %}
               {# <a href="{% url "login" %}?next={{ request.path }}" #}
               {#     class="btn btn-small">{% trans "Log in" %}</a> or #}
               {# =persona #}    
               <li title="Login with Mozilla Persona.">
-                {# {% browserid_login text='Login to Submit Link' next=request.path link_class='btn btn-small btn-custom' %} #}\
-                
+                {# {% browserid_login text='Login to Submit Link' next=request.path link_class='btn btn-small btn-custom' %} #}
                 {# If anonymous user clicks on voteup link, redirect to /rating/, otherwise, to request.path #} 
                 {% if request.path == "/accounts/login/" %} 
-                <p>{% browserid_login text='Login' next='/rating/' link_class='btn btn-custom' %}</p>
+                {% browserid_login text='Login' next='/rating/' link_class='btn btn-custom' %}
                 {% else %}
-                <p>{% browserid_login text='Login' next=request.path link_class='btn btn-custom' %}</p>
+                {% browserid_login text='Login' next=request.path link_class='btn btn-custom' %}
                 {% endif %}
-                
               </li>
               {# <a href="{% url "signup" %}?next={{ request.path }}" #}
               {#     class="btn btn-small">{% trans "Create an Account" %}</a> #}

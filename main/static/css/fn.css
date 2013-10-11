@@ -72,6 +72,7 @@ div.rating {display:inline; }
 span.arrows i {}
 .score, .arrows {color:#999;}
 .arrows a:hover i {background-color:#eee;}
+td.link-negative i.votedown {}
 
 /* =Tables */
 table {margin-top:0;}
