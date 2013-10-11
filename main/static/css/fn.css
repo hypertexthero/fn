@@ -17,7 +17,7 @@ p, li, dd, dt {color:#000;}
 .navbar a {padding:10px 15px !important; color:#fff !important;}
 .navbar li.active a,
 a.brand.active {color:#fc6 !important; background:none !important;}
-.navbar a.btn-custom, .navbar a.btn-primary {padding:3px 10px !important; margin:7px 3px; color:#fff !important; background:#393;}
+.navbar a.btn-custom, .navbar a.btn-primary {padding:3px 10px !important; margin:7px 0 7px 14px; color:#fff !important; background:#393;}
 .btn-custom, .btn-primary {background:#393; color:#fff !important;}
 .navbar-search {float:none; text-align:center; margin:0 auto;}
 .navbar h1 {margin:0; padding:0; line-height:1em;}

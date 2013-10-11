@@ -8,10 +8,10 @@ Things To Do
 
 - Deployment
 - Blog post
-- Bookmarklet for posting
+- IE test
 - HTTPS
-- Introduction using [Intro.js](http://usablica.github.io/intro.js/)
 - Search comments
+- Bookmarklet for posting
 - [Title case](https://pypi.python.org/pypi/titlecase/0.4) for link title
 
 
