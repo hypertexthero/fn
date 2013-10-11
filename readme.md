@@ -7,6 +7,7 @@ Things To Do
 ==========
 
 - Deployment
+- FAQ and guidelines
 - Blog post
 - IE test
 - HTTPS
