@@ -26,6 +26,9 @@ INSTALLED_APPS = (
     "mezzanine.generic",
     "mezzanine.accounts",
 
+    # gunicorn for production
+    "gunicorn",
+
     # =persona for authentication
     "django_browserid",
     
