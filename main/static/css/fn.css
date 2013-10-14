@@ -32,7 +32,7 @@ a.brand {
 
 .navbar a:hover {color:#fc6 !important;}
 
-.main a:hover, footer a:hover {background:#f5f5f5; text-decoration:none; color:#393;}
+.main a:hover, footer a:hover {background:#f5f5f5; text-decoration:none; color:#393 !important;}
 
 a:active, a:focus {color:#732200 !important;}
 *:target {background:#FFFFEF !important;}
@@ -72,6 +72,7 @@ div.rating {display:inline; }
 .rating form {display:none !important;}
 span.arrows i {}
 .score, .arrows {color:#999;}
+.arrows a {padding:2px 3px 2px 3px;}
 .arrows a:hover i {background-color:#eee;}
 td.link-negative i.votedown {}
 
