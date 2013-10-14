@@ -9,7 +9,7 @@
 
 {% for comment in object_list %}
 <div class="comment-item">
-    <p class="comment">{{ comment.comment }}</p>
+    <p class="comment">{{ comment.comment|comment_filter }}</p>
     <div class="meta muted small">
       {% if not profile_user %}{% rating_for comment %}{% endif %}
       by <a href="{% url "profile" comment.user.username %}">{{ comment.user.profile }}</a>
