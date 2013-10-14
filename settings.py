@@ -67,6 +67,7 @@ LOGIN_REDIRECT_URL = '/' # =persona
 LOGIN_REDIRECT_URL_FAILURE = '/' # =persona
 LOGOUT_REDIRECT_URL = '/' # =persona
 
+# remove?
 MIDDLEWARE_CLASSES = (["mezzanine.core.middleware.UpdateCacheMiddleware"] +
                       list(MIDDLEWARE_CLASSES) +
                       ["mezzanine.core.middleware.FetchFromCacheMiddleware"])
