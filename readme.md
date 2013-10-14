@@ -10,13 +10,6 @@ Things To Do
     - Find out why gunicorn command throws an error (currently running with `gunicorn_django` instead)
     - Find out why when using memcached the site breaks and shows code inside `{% nevercache %}` tags.
 - FAQ and guidelines
-- HTTPS
-- Search comments
+- [HTTPS](https://www.tbray.org/ongoing/When/201x/2012/12/02/HTTPS)
+- Search for comments and descriptions
 - [Title case](https://pypi.python.org/pypi/titlecase/0.4) for link title?
-
-
-For Future Refactoring
-======================
-
-- [Users should be be redirected to proper page & action after login](https://github.com/mozilla/django-browserid/issues/205)
-- [Disable password fields in profile update form](http://stackoverflow.com/a/12648124/412329)
