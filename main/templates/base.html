@@ -34,7 +34,7 @@
 <div class="container">
     {% if settings.SITE_TITLE %}
       <h1>{# http://www.fileformat.info/info/unicode/char/2668/index.htm &#9832; #}
-        <a class="brand{% if request.path == "/" %} active{% endif %}" href="/"><b>♨</b> {{ settings.SITE_TITLE }}</a>
+        <a class="brand{% if request.path == "/" %} active{% endif %}" href="/">{{ settings.SITE_TITLE }}</a>
       </h1>
     {% endif %}
     <ul class="nav">
