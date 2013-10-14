@@ -109,8 +109,6 @@ div.meta {margin-bottom:0.75em;}
 .link-item .score {font-size: 16px; line-height: 26px;}
 .link-detail {width:80%;}
 @media (max-width: 600px) {.link-detail {width:60%;}}
-/*.link-detail a.profile, .link-detail a.comments {color:#999;}*/
-.link-detail a.profile:visited, .link-detail a.comments:visited {color:#bbb;}
 .link-meta .rating {margin:0 5px 0 0 !important;}
 
 /* =Comments */
