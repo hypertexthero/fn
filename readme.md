@@ -13,7 +13,6 @@ Things To Do
 - FAQ and guidelines
 - HTTPS
 - Search comments
-- Bookmarklet for posting
 - [Title case](https://pypi.python.org/pypi/titlecase/0.4) for link title?
 
 

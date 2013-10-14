@@ -1,5 +1,5 @@
 {% extends "accounts/account_form.html" %}
-{% load i18n future browserid %}
+{% load i18n future browserid mezzanine_tags %}
 
 {% block main %}
 
@@ -13,12 +13,14 @@
     {# {% url "mezzanine_password_reset" as password_reset_url %} #}
     {# {% url "profile_update" as profile_update_url %} #}
     {# {% blocktrans %}<p><a href="{{ password_reset_url }}?next={{ profile_update_url }}">Forgot your password?</a></p>{% endblocktrans %}</p> #}
-    
+
+    {% nevercache %}
     {% if request.path == "/accounts/login/" %}
     <p>{% browserid_login text='Login' next='/rating/' link_class='btn btn-custom' %}</p>
     {% else %}
     <p>{% browserid_login text='Login' link_class='btn btn-custom' %}</p>
     {% endif %}
+    {% endnevercache %}
     
 {% endif %}
 

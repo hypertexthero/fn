@@ -7,7 +7,45 @@
 
 {% block main %}
 <form method="post">
-<fieldset>{% fields_for form %}</fieldset>
+  {% csrf_token %}
+  <input name="referrer" value="//{{request.META.HTTP_HOST}}/users/{{request.user}}/" type="hidden">
+  {{ form.non_field_errors }}
+{# <fieldset>{% fields_for form %}</fieldset> #}
+
+<fieldset>
+  <div class="control-group input_id_title{% if form.title.errors %} error{% endif %}">
+    <label class="control-label" for="id_title">{{ form.title.label }}</label>
+    <div class="controls">
+      {% if u and t %}
+      	<input id="id_title" maxlength="500" name="title" type="text" value="{{ t }}">
+      {% else %}
+      	<input id="id_title" maxlength="500" name="title" type="text" value="{{ form.title.value|default:'' }}">
+      {% endif %}      
+      <span class="help-inline">{% if form.title.errors %}{{ form.title.errors }}{% endif %}</span>
+    </div>
+  </div>
+  
+  <div class="control-group input_id_link{% if form.link.errors %} error{% endif %}">
+    <label class="control-label" for="id_link">{{ form.link.label }}</label>
+    <div class="controls">
+      {% if u and t %}
+      	<input id="id_link" maxlength="200" type="text" name="link" value="{{ u }}" />
+      {% else %}
+      	<input id="id_link" maxlength="200" type="text" name="link" value="{{ form.link.value|default:'' }}">
+      {% endif %}
+      <span class="help-inline">{% if form.link.errors %}{{ form.link.errors }}{% endif %}</span>
+    </div>
+  </div>
+  
+  <div class="control-group input_id_description{% if form.description.errors %} error{% endif %}">
+    <label class="control-label" for="id_description">{{ form.description.label }}</label>
+    <div class="controls">
+      <textarea cols="40" id="id_description" name="description" rows="10">{{ form.description.value|default:'' }}</textarea>
+      <span class="help-inline">{% if form.description.errors %}{{ form.description.errors }}{% endif %}</span>
+    </div>
+  </div>
+</fieldset>
+
 <div class="actions">
     <input class="btn btn-custom btn-large" type="submit" value="Submit">
 </div>

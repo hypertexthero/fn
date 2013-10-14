@@ -125,6 +125,13 @@ class LinkCreate(CreateView):
         form.instance.gen_description = False
         info(self.request, "Link created")
         return super(LinkCreate, self).form_valid(form)
+    
+    # variables for post to food news bookmarklet
+    def get_context_data(self, **kwargs):
+        context = super(LinkCreate, self).get_context_data(**kwargs)
+        context['u'] = self.request.GET.get('u', '')
+        context['t'] = self.request.GET.get('t', '')
+        return context
 
 
 class LinkDetail(LinkView, DetailView):

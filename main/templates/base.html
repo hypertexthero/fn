@@ -28,7 +28,9 @@
 </head>
 
 <body>
+{% nevercache %}
 {% browserid_info %} 
+{% endnevercache %}
 <div class="navbar navbar-inverse">
 <div class="navbar-inner navbar-fixed-top">
 <div class="container">
@@ -106,16 +108,24 @@
 <footer>
 <div class="container aligncenter">
     <p>
+      {# Thank you for visiting <a class="quiet" href="/">food.hypertexthero.com</a> #}
+      <br>
       Recent posts with most &and;upvotes are on the <a href="/">homepage</a>. Latest posts are in <a href="/new/">new</a>.
       <br>
-      Thank you for visiting <a class="quiet" href="/">food.hypertexthero.com</a>
+      
+
+      <a href="/about/">About</a> <span class="muted">|</span> <a href="/faq/" title="Frequently asked questions.">FAQ</a> <span class="muted">|</span> <a href="javascript:window.location=%22{{SITE_URL}}%2Flink%2Fcreate?u=%22+encodeURIComponent(document.location)+%22&amp;t=%22+encodeURIComponent(document.title)" title="Drag this link to your browser bookmarks bar, then click on it to post a link to the webpage you are currently visiting to Food News.">Post to Food News</a> <span>&larr; drag this link to your browser toolbar, then click to post the current page to food.hypertexthero.com</span>
       <br>
       {% search_form "main.Link" %}
     </p>
 </div>
 </footer>
 
-{% browserid_js %} 
+{# {% browserid_js %}  #}
+<script type="text/javascript" src="{{ STATIC_URL }}browserid/browserid.js"></script>
+{% nevercache %}
+<script type="text/javascript" src="https://login.persona.org/include.js"></script>
+{% endnevercache %}
 {% block extra_scripts %}{% endblock extra_scripts %}
 </body>
 </html>
