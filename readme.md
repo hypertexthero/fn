@@ -6,7 +6,6 @@ Food News
 Things To Do
 ==========
 
-- IE test
 - Deployment Issues
     - Find out why gunicorn command throws an error (currently running with `gunicorn_django` instead)
     - Find out why when using memcached the site breaks and shows code inside `{% nevercache %}` tags.
