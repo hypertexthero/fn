@@ -1,7 +1,7 @@
 Food News
 =========
 
-[Food News](http://food.hypertexthero.com) is a Hacker News clone, built using [Drum](http://drum.jupo.org/) & [Mezzanine](http://http://mezzanine.jupo.org/). Uses [Mozilla Persona](https://persona.org) for authentication. More at this [logbook post](http://hypertexthero.com/logbook/2013/10/intro-food-news/).
+[Food News](http://food.hypertexthero.com) is a Hacker News clone, built using [Drum](http://drum.jupo.org/) & [Mezzanine](http://http://mezzanine.jupo.org/). Uses [Mozilla Persona](https://persona.org) for authentication. More [in this post](http://hypertexthero.com/logbook/2013/10/intro-food-news/).
 
 Things To Do
 ==========
