@@ -11,7 +11,7 @@
 
 {% block main %}
 <div class="link-view">
-    <p class="description">{{ object.description }}</p>
+    <p class="description">{{ object.description|urlize|linebreaksbr }}</p>
     <div class="link-meta">
         {% rating_for object %}
         by <a href="{% url "profile" object.user.username %}">{{ object.user.profile }}</a>
