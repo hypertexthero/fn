@@ -53,10 +53,10 @@ a:active, a:focus {color:#732200 !important;}
 .small {font-size:0.8em; line-height:1em;}
 
 /* =Headings */
-h1, h3 {margin:0; color:#000;}
+h1, h3 {margin:0; color:#2C1E12;}
 h1 {font-size:20px; margin-top:10px;}
-h2 {font-size:16px;}
-h2 a:visited {color:#999;}
+h2 {font-size:16px; color:#2C1E12;}
+h2 a:visited {color:#533A24;}
 .domain {font-weight:normal; font-size:14px; color:#999;}
 
 /* =Forms, etc */
