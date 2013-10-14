@@ -46,7 +46,7 @@
       <li{% if request.path == comment_list_best %} class="active"{% endif %}><a href="{{ comment_list_best }}">Best</a></li>
     </ul>
 
-        {# {% nevercache %} #}
+        {% nevercache %}
           <ul class="nav pull-right">
               {% if request.user.is_authenticated %}
               {# <a href="{% url "logout" %}?next={{ request.path }}" #}
@@ -79,19 +79,19 @@
               {#     class="btn btn-small">{% trans "Create an Account" %}</a> #}
               {% endif %}
           </ul>
-        {# {% endnevercache %} #}
+        {% endnevercache %}
 </div>
 </div>
 </div>
 
 <div class="container main">
-{# {% nevercache %} #}
+{% nevercache %}
 {% for message in messages %}
 <div class="alert alert-{{ message.tags }}" data-alert="alert">
     <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
 </div>
 {% endfor %}
-{# {% endnevercache %} #}
+{% endnevercache %}
 <h1>{% block title %}{% endblock %}</h1>
 </div>
 

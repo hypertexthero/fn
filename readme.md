@@ -1,19 +1,20 @@
 Food News
 =========
 
-[Food News](http://food.hypertexthero.com) is a Hacker News clone, built using [Drum](http://drum.jupo.org/) & [Mezzanine](http://http://mezzanine.jupo.org/). Uses [Mozilla Persona](https://persona.org) for authentication.
+[Food News](http://food.hypertexthero.com) is a Hacker News clone, built using [Drum](http://drum.jupo.org/) & [Mezzanine](http://http://mezzanine.jupo.org/). Uses [Mozilla Persona](https://persona.org) for authentication. More at this [logbook post](http://hypertexthero.com/logbook/2013/10/intro-food-news/).
 
 Things To Do
 ==========
 
-- Deployment - see why the new gunicorn command throws an error (currently running with `gunicorn_django`)
-- FAQ and guidelines
-- Blog post
 - IE test
+- Deployment Issues
+    - Find out why gunicorn command throws an error (currently running with `gunicorn_django` instead)
+    - Find out why when using memcached the site breaks and shows code inside `{% nevercache %}` tags.
+- FAQ and guidelines
 - HTTPS
 - Search comments
 - Bookmarklet for posting
-- [Title case](https://pypi.python.org/pypi/titlecase/0.4) for link title
+- [Title case](https://pypi.python.org/pypi/titlecase/0.4) for link title?
 
 
 For Future Refactoring
