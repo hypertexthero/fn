@@ -11,7 +11,7 @@ p, li, dd, dt {color:#000;}
     border-radius:0 !important; 
     border:0; 
     border-bottom:1px solid #664b32 !important;
-    background:#111 url(/static/img/pattern_100.gif) repeat 0 0 !important; /* Thanks to http://www.squidfingers.com/ */
+    background:transparent url(/static/img/pattern_100.gif) repeat 0 0 !important; /* Thanks to http://www.squidfingers.com/ */
     }
 .navbar {color:#ddd; margin-bottom:0;}
 .navbar a {color:#fff !important;}
