@@ -14,7 +14,7 @@
     <p class="description">{{ object.description|urlize|linebreaksbr }}</p>
     <div class="link-meta">
         {% rating_for object %}
-        by <a href="{% url "profile" object.user.username %}" title="The number is the user's karma. It generally increases when their links or comments are upvoted.">{{ object.user.profile }}</a>
+        by <a href="{% url "profile" object.user.username %}" title="The number in brackets is the user's karma. It generally increases when their links or comments are upvoted.">{{ object.user.profile }}</a>
         {{ object.publish_date|timesince }} ago <a href="{{ object.get_absolute_url }}" title="Permanent link to this page.">#</a>
     </div>
     {% order_comments_by_score_for object %}
