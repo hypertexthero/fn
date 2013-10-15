@@ -58,7 +58,7 @@
                 <li>
                   {% url "profile" request.user.username as profile_url %}
                   {% if not profile_url %}{% url "profile_update" as profile_url %}{% endif %}
-                  <a href="{{ profile_url }}" title="Click to update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a>
+                  <a href="{{ profile_url }}" title="Click to view and update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a>
                 </li>
                 <li>
                   {% browserid_logout text='Logout' %}

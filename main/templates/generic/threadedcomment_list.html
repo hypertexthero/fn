@@ -12,7 +12,7 @@
     <p class="comment">{{ comment.comment|urlize|linebreaksbr }}</p>
     <div class="meta muted small">
       {% if not profile_user %}{% rating_for comment %}{% endif %}
-      by <a href="{% url "profile" comment.user.username %}">{{ comment.user.profile }}</a>
+      by <a href="{% url "profile" comment.user.username %}" title="The number in brackets is the user's karma. It generally increases when their links or comments are upvoted.">{{ comment.user.profile }}</a>
       {{ comment.submit_date|timesince }} ago in
       <a class="comments" href="{{ comment.get_absolute_url }}" title="Permanent link to this comment.">{{ comment.content_object }}</a>
       <br clear="left">
