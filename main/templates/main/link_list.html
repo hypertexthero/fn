@@ -11,8 +11,14 @@
     {% for link in object_list %}
     <tr>
         <td class="entry link-detail{% if link.rating_sum < 0 %} link-negative{% endif %}">
-          <h2><b>{{ forloop.counter0|add:object_list.start_index }}</b> <a href="{{ link.link }}">{{ link.title }}</a>
-          <span class="domain">({{ link.domain }})</span></h2>
+          <h2>
+            <b>{{ forloop.counter0|add:object_list.start_index }}</b> 
+            {% if link.link %}
+            <a href="{{ link.link }}">{{ link.title }}</a> <span class="domain">({{ link.domain }})</span>
+            {% else %}
+            <a href="{{ link.get_absolute_url }}">{{ link.title }}</a>
+            {% endif %}
+          </h2>
           <div class="meta muted small">
             {% if not profile_user %}{% rating_for link %}{% endif %}
             by <a class="profile" href="{% url "profile" link.user.username %}">{{ link.user.username }} {# <small>({{ link.user.profile.karma }})</small> #}</a>

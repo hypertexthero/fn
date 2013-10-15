@@ -14,7 +14,7 @@
 
 <fieldset>
   <div class="control-group input_id_title{% if form.title.errors %} error{% endif %}">
-    <label class="control-label" for="id_title">{{ form.title.label }}</label>
+    <label class="control-label" for="id_title">{{ form.title.label }} <small class="muted normal">or question beginning with &lsquo;Ask FN:&rsquo; Example: <i>Ask FN: How can we make healthy food in cities more affordable?</i></small></label>
     <div class="controls">
       {% if u and t %}
       	<input id="id_title" maxlength="500" name="title" type="text" value="{{ t }}">
@@ -26,7 +26,7 @@
   </div>
   
   <div class="control-group input_id_link{% if form.link.errors %} error{% endif %}">
-    <label class="control-label" for="id_link">{{ form.link.label }}</label>
+    <label class="control-label" for="id_link">{{ form.link.label }} <small class="muted normal">Leave this empty if you are asking a question.</label>
     <div class="controls">
       {% if u and t %}
       	<input id="id_link" maxlength="200" type="text" name="link" value="{{ u }}" />
@@ -38,7 +38,7 @@
   </div>
   
   <div class="control-group input_id_description{% if form.description.errors %} error{% endif %}">
-    <label class="control-label" for="id_description">{{ form.description.label }}</label>
+    <label class="control-label" for="id_description">{{ form.description.label }} <small class="muted normal">Not required, but available. URLs are auto-linked. Line breaks work.</small></label>
     <div class="controls">
       <textarea cols="40" id="id_description" name="description" rows="10">{{ form.description.value|default:'' }}</textarea>
       <span class="help-inline">{% if form.description.errors %}{{ form.description.errors }}{% endif %}</span>

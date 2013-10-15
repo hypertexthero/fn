@@ -2,7 +2,7 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
 
-from .views import LinkList, LinkCreate, LinkDetail, CommentList
+from .views import AskLinkList, LinkList, LinkCreate, LinkDetail, CommentList
 
 
 urlpatterns = patterns("",
@@ -12,6 +12,9 @@ urlpatterns = patterns("",
     url("^new/$",
         LinkList.as_view(), {"by_score": False},
         name="link_list_latest"),
+    url("^ask/$",
+        AskLinkList.as_view(),
+        name="link_list_ask"),
     url("^comments/$",
         CommentList.as_view(), {"by_score": False},
         name="comment_list_latest"),
@@ -21,7 +24,9 @@ urlpatterns = patterns("",
     url("^link/create/$",
         login_required(LinkCreate.as_view()),
         name="link_create"),
-    url("^link/(?P<slug>.*)/$",
+    # url("^link/(?P<slug>.*)/$",
+    # changing to pk so that users can leave link field blank to ask questions
+    url("^link/(?P<pk>\d+)/$",
         LinkDetail.as_view(),
         name="link_detail"),
     url("^users/(?P<username>.*)/links/$",

@@ -16,7 +16,7 @@ from mezzanine.generic.fields import RatingField, CommentsField
 
 class Link(Displayable, Ownable):
 
-    link = models.URLField()
+    link = models.URLField(blank=True)
     rating = RatingField()
     comments = CommentsField()
     
@@ -25,7 +25,7 @@ class Link(Displayable, Ownable):
 
     @models.permalink
     def get_absolute_url(self):
-        return ("link_detail", (), {"slug": self.slug})
+        return ("link_detail", (), {"pk": self.pk})
 
     def domain(self):
         return urlparse(self.link).netloc

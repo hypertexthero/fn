@@ -96,6 +96,30 @@ class LinkList(LinkView, ScoreOrderingView):
             return "Newest Links"
 
 
+# =todo: refactor into LinkList view =============
+class AskLinkView(object):
+    """
+    View for Links with the link field blank, used for 'Ask FN:'
+    Questions. =todo: We can probably refactor this into the LinkList view.
+    """
+    def get_queryset(self):
+        return Link.objects.published().filter(link='').select_related("user", "user__profile")
+
+# =todo: refactor into LinkList view =============
+class AskLinkList(AskLinkView, ScoreOrderingView):
+    """
+    View for Links with the link field blank, used for 'Ask FN:'
+    Questions. =todo: We can probably refactor this into the LinkList view.
+    """
+
+    date_field = "publish_date"
+    score_fields = ("rating_sum", "comments_count")
+
+    def get_title(self, context):
+        return "Questions for Food News"
+
+        
+
 class LinkCreate(CreateView):
     """
     Link creation view - assigns the user to the new link, as well
@@ -109,18 +133,25 @@ class LinkCreate(CreateView):
 
     def form_valid(self, form):
         hours = getattr(settings, "ALLOWED_DUPLICATE_LINK_HOURS", None)
-        if hours:
-            lookup = {
-                "link": form.instance.link,
-                "publish_date__gt": now() - timedelta(hours=hours),
-            }
-            try:
-                link = Link.objects.get(**lookup)
-            except Link.DoesNotExist:
-                pass
-            else:
-                error(self.request, "Link exists")
-                return redirect(link)
+        
+        # Changed permalinks to pk instead of slug
+        # so users can leave the URL field blank and ask questions,
+        # so we need to check whether the link field is blank before
+        # doing the check for duplicate links.
+        if form.instance.link:
+            
+            if hours:
+                lookup = {
+                    "link": form.instance.link,
+                    "publish_date__gt": now() - timedelta(hours=hours),
+                }
+                try:
+                    link = Link.objects.get(**lookup)
+                except Link.DoesNotExist:
+                    pass            
+                else:
+                    error(self.request, "Link exists")
+                    return redirect(link)
         form.instance.user = self.request.user
         form.instance.gen_description = False
         info(self.request, "Link created")

@@ -6,7 +6,9 @@
 {% block meta_title %}{{ object.title }} - {% endblock %}
 {% block title %}
 <a href="{{ object.link }}">{{ object.title }}</a>
+{% if object.link %}
 <span class="domain">({{ object.domain }})</span>
+{% endif %}
 {% endblock %}
 
 {% block main %}

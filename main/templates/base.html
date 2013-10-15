@@ -43,9 +43,11 @@
       {% url "link_list_latest" as link_list_latest %}
       {% url "comment_list_latest" as comment_list_latest %}
       {% url "comment_list_best" as comment_list_best %}
+      {% url "link_list_ask" as link_list_ask %}
       <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}">New</a></li>
       <li{% if request.path == comment_list_latest %} class="active"{% endif %}><a href="{{ comment_list_latest }}">Comments</a></li>
       <li{% if request.path == comment_list_best %} class="active"{% endif %}><a href="{{ comment_list_best }}">Best</a></li>
+      <li{% if request.path == link_list_ask %} class="active"{% endif %}><a href="{{ link_list_ask }}">Ask</a></li>
     </ul>
 
         {% nevercache %}
@@ -63,7 +65,7 @@
                 <li>
                   {% browserid_logout text='Logout' %}
                 </li>
-                <li><a class="btn btn-custom" href="{% url "link_create" %}">Submit New Link</a></li>
+                <li><a class="btn btn-custom" href="{% url "link_create" %}">Submit Link or Ask Question</a></li>
               {% else %}
               {# <a href="{% url "login" %}?next={{ request.path }}" #}
               {#     class="btn btn-small">{% trans "Log in" %}</a> or #}
