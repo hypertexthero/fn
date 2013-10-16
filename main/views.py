@@ -6,6 +6,8 @@ from django.contrib.messages import info, error
 from django.forms.models import modelform_factory
 from django.shortcuts import get_object_or_404, redirect
 from django.utils.timezone import now
+from django.contrib.syndication.views import Feed
+from django.utils.feedgenerator import Atom1Feed
 from django.views.generic import ListView, CreateView, DetailView
 
 from mezzanine.conf import settings
@@ -197,3 +199,28 @@ class CommentList(ScoreOrderingView):
         else:
             return "Latest Comments"
 
+
+# =feeds ===================================
+
+class RssFeed(Feed):
+    title = "Food News"
+    link = "http://food.hypertexthero.com"
+    description = "Links about healthy sustainable food, ranked by readers."
+    # description_template = "hth/feed_description.html" # using default for now
+
+    def items(self):
+        return Link.objects.filter(status=2).order_by('-publish_date')[:15]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_pubdate(self, item):
+        return item.publish_date
+
+    def item_description(self, item):
+        # return smart_truncate(item.body_html)
+        return item.description
+
+class AtomFeed(RssFeed):
+    feed_type = Atom1Feed
+    subtitle = RssFeed.description
