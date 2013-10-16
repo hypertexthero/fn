@@ -10,9 +10,9 @@
 <table class="table table-condensed">
     {% for link in object_list %}
     <tr>
+      <td class="number">{{ forloop.counter0|add:object_list.start_index }}.</td>
         <td class="entry link-detail{% if link.rating_sum < 0 %} link-negative{% endif %}">
           <h2>
-            <b>{{ forloop.counter0|add:object_list.start_index }}</b> 
             {% if link.link %}
             <a href="{{ link.link }}">{{ link.title }}</a> <span class="domain">({{ link.domain }})</span>
             {% else %}

@@ -79,9 +79,9 @@ td.link-negative i.votedown {}
 /* =Tables */
 table {margin-top:0;}
 td {border:0 !important;}
-td.number {color:#ccc; width:0.5em; vertical-align:middle;}
+td.number {color:#ccc; width:0.5em; text-align:right; line-height:24px;}
 td.entry {width:auto; vertical-align:middle;}
-td.entry h2 {margin:0; line-height:24px;}
+td.entry h2 {margin:0; line-height:24px; font-weight:normal;}
 td.entry h2 {color:#ccc;}
 div.meta {margin-bottom:0.75em;}
 
