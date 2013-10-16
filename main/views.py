@@ -93,9 +93,9 @@ class LinkList(LinkView, ScoreOrderingView):
         if context["by_score"]:
             return ""  # Homepage
         if context["profile_user"]:
-            return "Links by %s - " % context["profile_user"].profile
+            return "Links by %s " % context["profile_user"].profile
         else:
-            return "Newest Links - "
+            return "Newest Links "
 
 
 # =todo: refactor into LinkList view =============
@@ -118,7 +118,7 @@ class AskLinkList(AskLinkView, ScoreOrderingView):
     score_fields = ("rating_sum", "comments_count")
 
     def get_title(self, context):
-        return "Questions for Food News - "
+        return "Questions for Food News "
 
         
 
