@@ -1,6 +1,7 @@
 
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 
 from .views import AskLinkList, LinkList, LinkCreate, LinkDetail, CommentList,\
 RssFeed, AtomFeed
@@ -39,9 +40,11 @@ urlpatterns = patterns("",
     url("^users/(?P<username>.*)/comments/$",
         CommentList.as_view(), {"by_score": False},
         name="comment_list_user"),
-        # Feeds
-    url(r'^rss/$', RssFeed()),
-    url(r'^atom/$', AtomFeed()),
-        
-        
+
+    # Feeds
+    url(r"^rss/$", RssFeed()),
+    url(r"^atom/$", AtomFeed()),
+    
+    # Robots
+    url(r"^robots\.txt$", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 )
