@@ -154,7 +154,7 @@ class LinkCreate(CreateView):
                     return redirect(link)
         form.instance.user = self.request.user
         form.instance.gen_description = False
-        info(self.request, "Link created")
+        info(self.request, "Entry created")
         return super(LinkCreate, self).form_valid(form)
     
     # variables for post to food news bookmarklet
