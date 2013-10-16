@@ -1,6 +1,6 @@
 {% load i18n mezzanine_tags comment_tags browserid %}
 <div id="comments">
-<h3>{% trans "Comments" %}</h3>
+{# <h3>{% trans "Comments" %}</h3> #}
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_comments.html" %}
 {% else %}
@@ -13,7 +13,7 @@ $(function() {
 });
 </script>
 <style>.input_id_honeypot {display:none !important;}</style>
-{% comment_thread object_for_comments %}
+
 {# <h3>{% trans "New Comment" %}</h3> #}
 
 {# =todo: remove if possible #}
@@ -25,13 +25,14 @@ $(function() {
     {% fields_for unposted_comment_form %}
     {% endif %}
     <div class="form-actions">
-        <input class="btn btn-custom btn-large" type="submit" value="{% trans "Submit New Comment" %}">
+        <input class="btn btn-custom btn-large" type="submit" value="{% trans "Submit Comment" %}">
     </div>
 </form>
 {% else %}
-  {% browserid_login text='Login to submit new comment' next=request.path %}
+  <b>{% browserid_login text='Login to submit new comment' next=request.path %}</b>
 {% endif %}
 
+{% comment_thread object_for_comments %}
 
 
 {% endif %}
