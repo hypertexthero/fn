@@ -209,7 +209,7 @@ class RssFeed(Feed):
     # description_template = "hth/feed_description.html" # using default for now
 
     def items(self):
-        return Link.objects.filter(status=2).order_by('publish_date')[:30]
+        return Link.objects.filter(status=2).order_by('-publish_date')[:30]
 
     def item_title(self, item):
         return item.title
