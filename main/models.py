@@ -13,7 +13,6 @@ from mezzanine.generic.fields import RatingField, CommentsField
 
 # from mezzanine.core.managers import SearchableManager
 
-
 class Link(Displayable, Ownable):
 
     link = models.URLField(blank=True)
