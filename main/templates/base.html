@@ -66,7 +66,7 @@
                   {% if not profile_url %}{% url "profile_update" as profile_url %}{% endif %}
 
                  {% if request.user.date_joined.date == request.user.last_login.date %}
-                   <a href="{{ profile_url }}" title="Click to view and update your profile.">Welcome! Click to set your user name</a>
+                   <a href="{{ profile_url }}" title="Click to view and update your profile. Your username will appear here 24 hours after you login for the first time.">Profile</a>
                   {% else %}
                     <a href="{{ profile_url }}" title="Click to view and update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a>
                   {% endif %}
