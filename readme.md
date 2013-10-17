@@ -9,6 +9,7 @@ Things To Do
 - Deployment Issues.
     - Find out why gunicorn command throws an error (currently running with `gunicorn_django` instead).
     - Find out why when using memcached the site breaks and shows code inside `{% nevercache %}` tags.
+- Voteup/down icons should disappear after being clicked once.
 - Make account update link more friendly for people logging in for the first time.
 - FAQ and guidelines.
 - [HTTPS](https://www.tbray.org/ongoing/When/201x/2012/12/02/HTTPS).
