@@ -64,16 +64,12 @@
                 <li>
                   {% url "profile" request.user.username as profile_url %}
                   {% if not profile_url %}{% url "profile_update" as profile_url %}{% endif %}
-                  <a href="{{ profile_url }}" title="Click to view and update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a>
-                  
-                  {# =todo: friendlier message for first users: #}
-                 {# {% if request.user.date_joined.date == request.user.last_login.date %} #}
-                 {#    <a href="{{ profile_url }}" title="Click to view and update your profile.">Welcome! Click to set your user name</a> #}
-                 {#  {% else %} #}
-                 {#    <a href="{{ profile_url }}" title="Click to view and update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a> #}
-                 {#  {% endif %} #}
-                  
-                  
+
+                 {% if request.user.date_joined.date == request.user.last_login.date %}
+                   <a href="{{ profile_url }}" title="Click to view and update your profile.">Welcome! Click to set your user name</a>
+                  {% else %}
+                    <a href="{{ profile_url }}" title="Click to view and update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a>
+                  {% endif %}
                 </li>
                 <li>
                   {% browserid_logout text='Logout' %}
