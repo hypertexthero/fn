@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width">
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %} Links about healthy sustainable food, ranked by readers.">
-<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} - {{ settings.SITE_TITLE }}{% endif %}</title>
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} ♨ {{ settings.SITE_TITLE }}{% endif %}</title>
 
 <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="http://food.hypertexthero.com/atom/">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="http://food.hypertexthero.com/rss/">
@@ -65,6 +65,15 @@
                   {% url "profile" request.user.username as profile_url %}
                   {% if not profile_url %}{% url "profile_update" as profile_url %}{% endif %}
                   <a href="{{ profile_url }}" title="Click to view and update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a>
+                  
+                  {# =todo: friendlier message for first users: #}
+                 {# {% if request.user.date_joined.date == request.user.last_login.date %} #}
+                 {#    <a href="{{ profile_url }}" title="Click to view and update your profile.">Welcome! Click to set your user name</a> #}
+                 {#  {% else %} #}
+                 {#    <a href="{{ profile_url }}" title="Click to view and update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a> #}
+                 {#  {% endif %} #}
+                  
+                  
                 </li>
                 <li>
                   {% browserid_logout text='Logout' %}
