@@ -40,7 +40,7 @@
 <div class="container">
     {% if settings.SITE_TITLE %}
       <h1>{# http://www.fileformat.info/info/unicode/char/2668/index.htm &#9832; #}
-        <a class="brand{% if request.path == "/" %} active{% endif %}" href="/">{{ settings.SITE_TITLE }}</a>
+        <a class="brand{% if request.path == "/" %} active{% endif %}" href="/" title="Recent posts with most ∧upvotes.">{{ settings.SITE_TITLE }}</a>
       </h1>
     {% endif %}
     <ul class="nav">
@@ -48,10 +48,10 @@
       {% url "comment_list_latest" as comment_list_latest %}
       {% url "comment_list_best" as comment_list_best %}
       {% url "link_list_ask" as link_list_ask %}
-      <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}">New</a></li>
-      <li{% if request.path == comment_list_latest %} class="active"{% endif %}><a href="{{ comment_list_latest }}">Comments</a></li>
-      <li{% if request.path == comment_list_best %} class="active"{% endif %}><a href="{{ comment_list_best }}">Best</a></li>
-      <li{% if request.path == link_list_ask %} class="active"{% endif %}><a href="{{ link_list_ask }}">Ask</a></li>
+      <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}" title="Newest links. Check here if you're feeling impatient.">New</a></li>
+      <li{% if request.path == comment_list_latest %} class="active"{% endif %}><a href="{{ comment_list_latest }}" title="Very latest comments.">Comments</a></li>
+      <li{% if request.path == comment_list_best %} class="active"{% endif %}><a href="{{ comment_list_best }}" title="Hot comments.">Best</a></li>
+      <li{% if request.path == link_list_ask %} class="active"{% endif %}><a href="{{ link_list_ask }}" title="Questions from Food News readers. Spock, Scotty, Bones?! I want answers!">Ask</a></li>
     </ul>
 
         {% nevercache %}
@@ -71,7 +71,7 @@
                     <a href="{{ profile_url }}" title="Click to view and update your profile. The number is your karma. It increases when your links or comments are upvoted.">{{ request.user.username }} ({{ request.user.profile.karma }})</a>
                   {% endif %}
                 </li>
-                <li>
+                <li title="Peace out!">
                   {% browserid_logout text='Logout' %}
                 </li>
                 <li><a class="btn btn-custom" href="{% url "link_create" %}">Submit Link or Ask Question</a></li>
