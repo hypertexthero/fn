@@ -20,7 +20,9 @@
             {% endif %}
           </h2>
           <div class="meta muted small">
-            {% if not profile_user %}{% rating_for link %}{% endif %}
+            {% if not profile_user %}
+                {% rating_for link %}
+            {% endif %}
             by <a class="profile" href="{% url "profile" link.user.username %}">{{ link.user.username }} {# <small>({{ link.user.profile.karma }})</small> #}</a>
             {{ link.publish_date|timesince }} ago <span class="muted">|</span>
             <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a>

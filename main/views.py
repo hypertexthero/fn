@@ -118,7 +118,7 @@ class AskLinkList(AskLinkView, ScoreOrderingView):
     score_fields = ("rating_sum", "comments_count")
 
     def get_title(self, context):
-        return "Questions for Food News"
+        return "Ask"
 
         
 

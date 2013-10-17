@@ -23,6 +23,8 @@ var setRatingClick = function() {
                 container.find('.score').text(data.rating_sum);
             }
         }, 'json');
+        
+        $(this).addClass("clicked");
 
         return false;
     });
