@@ -74,7 +74,7 @@ span.arrows i {}
 .score, .arrows {color:#999;}
 .arrows a {padding:2px 3px 2px 3px; color:#393; font-weight:bold;}
 .arrows a:hover i {background-color:#eee;}
-td.link-negative i.votedown {}
+i.votedown {color:#960}
 .clicked {color:#ccc !important; text-decoration:none !important; display:none !important;}
 
 /* =Tables */
