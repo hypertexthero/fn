@@ -9,7 +9,7 @@
     {# don't let users vote on own objects? #}
     {# {% if request.user != rating_obj.user %} #}
     
-    {% if not rated %}
+    {% if not rated or request.user.is_anonymous %}
     <span class="arrows">
       {# classes are important for functionality - see drum.js #}
         <a href="#" title="Upvote this."><i class="voteup">^</i></a>
