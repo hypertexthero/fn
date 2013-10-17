@@ -15,7 +15,7 @@
         <a href="#" title="Upvote this."><i class="voteup">^</i></a>
 
         {# probably best to do this check in the view eventually #}
-        {% if request.user.profile.karma > 20 %} 
+        {% if request.user.profile.karma > 12 %} 
         <a href="#" title="Downvote this."><i class="votedown">&or;</i></a>
         {% endif %}
         
