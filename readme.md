@@ -10,6 +10,7 @@ Things To Do
     - Find out why gunicorn command throws an error (currently running with `gunicorn_django` instead).
     - Find out why when using memcached the site breaks and shows code inside `{% nevercache %}` tags.
 - Ability for users to edit and delete own comments.
+- I18n - French, Spanish, Arabic, Chinese, Russian and Portuguese.
 - FAQ and guidelines.
 - [HTTPS](https://www.tbray.org/ongoing/When/201x/2012/12/02/HTTPS).
 - Search for comments and descriptions.
