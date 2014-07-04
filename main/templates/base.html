@@ -83,9 +83,9 @@
                 {# {% browserid_login text='Login to Submit Link' next=request.path link_class='btn btn-small btn-custom' %} #}
                 {# If anonymous user clicks on voteup link, redirect to /rating/, otherwise, to request.path #} 
                 {% if request.path == "/accounts/login/" %} 
-                {% browserid_login text='Login' next='/rating/' link_class='btn btn-custom' %}
+                {% browserid_login text='Submit Link or Ask Question' next='/rating/' link_class='btn btn-custom' %}
                 {% else %}
-                {% browserid_login text='Login' next=request.path link_class='btn btn-custom' %}
+                {% browserid_login text='Submit Link or Ask Question' next='/link/create/' link_class='btn btn-custom' %}
                 {% endif %}
               </li>
               {# <a href="{% url "signup" %}?next={{ request.path }}" #}
